@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import java.util.Locale;
 
-public class Language {
-    private static Locale choiceLoc;
+public class LanguageUtils {
+    private static Locale chosenLoc;
 
     public static void initSpinnerLoc(final Context activity, Spinner spinner) {
         ArrayAdapter<CharSequence> adapterLoc = ArrayAdapter.createFromResource
@@ -23,9 +23,9 @@ public class Language {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String[] languages = activity.getResources().getStringArray(R.array.spinner_loc_array);
                 if (languages[position].equals("Английский") || languages[position].equals("English")) {
-                    choiceLoc = new java.util.Locale("en");
+                    chosenLoc = new java.util.Locale("en");
                 } else {
-                    choiceLoc = new java.util.Locale("ru");
+                    chosenLoc = new java.util.Locale("ru");
                 }
             }
 
@@ -37,10 +37,10 @@ public class Language {
     }
 
     public static void changeLoc(Activity activity) {
-        if (!Locale.getDefault().equals(choiceLoc)) {
-            Locale.setDefault(choiceLoc);
+        if (!Locale.getDefault().equals(chosenLoc)) {
+            Locale.setDefault(chosenLoc);
             Configuration configuration = new Configuration();
-            configuration.setLocale(choiceLoc);
+            configuration.setLocale(chosenLoc);
             activity.getResources().updateConfiguration(configuration,
                     activity.getBaseContext().getResources().getDisplayMetrics());
             activity.recreate();

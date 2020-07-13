@@ -8,9 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import androidx.annotation.StyleRes;
 
-public class Theme {
+public class ThemeUtils {
     private static @StyleRes int themeRes = R.style.AppTheme;
-    private static @StyleRes int choiceTheme;
+    private static @StyleRes int chosenTheme;
 
     public static void initSpinnerTheme(final Context activity, Spinner spinner) {
         ArrayAdapter<CharSequence> adapterTheme = ArrayAdapter.createFromResource
@@ -25,19 +25,19 @@ public class Theme {
                 switch (themes[position]) {
                     case "Стандартная":
                     case "Standard":
-                        choiceTheme = R.style.AppTheme;
+                        chosenTheme = R.style.AppTheme;
                         break;
                     case "Крупная":
                     case "Large":
-                        choiceTheme = R.style.AppTheme_MarginLarge;
+                        chosenTheme = R.style.AppTheme_MarginLarge;
                         break;
                     case "Средняя":
                     case "Average":
-                        choiceTheme = R.style.AppTheme_MarginAverage;
+                        chosenTheme = R.style.AppTheme_MarginAverage;
                         break;
                     case "Мелкая":
                     case "Small":
-                        choiceTheme = R.style.AppTheme_MarginSmall;
+                        chosenTheme = R.style.AppTheme_MarginSmall;
                         break;
                 }
             }
@@ -50,8 +50,8 @@ public class Theme {
     }
 
     public static int changeThemeRes(Activity activity) {
-        if (Theme.themeRes != Theme.choiceTheme) {
-            themeRes = choiceTheme;
+        if (ThemeUtils.themeRes != ThemeUtils.chosenTheme) {
+            themeRes = chosenTheme;
             activity.setTheme(themeRes);
             activity.recreate();
         }

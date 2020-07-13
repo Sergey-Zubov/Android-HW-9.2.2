@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(Theme.changeThemeRes(this));
+        setTheme(ThemeUtils.changeThemeRes(this));
         setContentView(R.layout.activity_main);
 
         initViews();
@@ -23,13 +23,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSpinnerTheme = findViewById(R.id.spinnerTheme);
         findViewById(R.id.btnOk).setOnClickListener(this);
 
-        Language.initSpinnerLoc(this, mSpinnerLoc);
-        Theme.initSpinnerTheme(this, mSpinnerTheme);
+        LanguageUtils.initSpinnerLoc(this, mSpinnerLoc);
+        ThemeUtils.initSpinnerTheme(this, mSpinnerTheme);
     }
 
     @Override
     public void onClick(View v) {
-        Language.changeLoc(this);
-        Theme.changeThemeRes(this);
+        LanguageUtils.changeLoc(this);
+        ThemeUtils.changeThemeRes(this);
     }
 }
